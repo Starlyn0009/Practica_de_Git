@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Git Flow App</title>
+    <!-- @branch feature/ui-improvements -->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestión de Usuarios</h1>
+            <p>Proyecto base para práctica de Git y Git Flow</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Sección de Formulario (@branch feature/add-user) -->
+            <section class="form-section">
+                <h2>Añadir / Editar Usuario</h2>
+                <form id="user-form">
+                    <input type="hidden" id="user-id">
+
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Rol:</label>
+                        <select id="role">
+                            <option value="">Seleccione un rol...</option>
+                            <option value="Admin">Administrador</option>
+                            <option value="User">Usuario</option>
+                            <option value="Editor">Editor</option>
+                        </select>
+                    </div>
+
+                    <div id="form-error" class="error-text"></div>
+                    <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                    <button type="button" class="btn btn-secondary"
+                        onclick="document.getElementById('user-form').reset(); document.getElementById('user-id').value=''; document.querySelector('#user-form button[type=submit]').textContent='Guardar Usuario'; document.getElementById('form-error').textContent='';">Cancelar</button>
+                </form>
+            </section>
+
+            <!-- Sección de Lista (@branch feature/list-users) -->
+            <section class="list-section">
+                <h2>Lista de Usuarios</h2>
+                <div class="table-responsive">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            <!-- Los usuarios serán renderizados aquí por JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Archivo principal module JS (@branch feature/init-project) -->
+    <script type="module" src="src/app.js"></script>
+</body>
+
+</html>
