@@ -71,8 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para refrescar la lista
     const refreshList = () => {
         const users = userService.getUsers();
-        userList.render(users);
+
+        const searchInput = document.getElementById('search-input');
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+
+        const filteredUsers = users.filter(user =>
+            user.name.toLowerCase().includes(searchTerm) ||
+            user.email.toLowerCase().includes(searchTerm) ||
+            user.role.toLowerCase().includes(searchTerm)
+        );
+
+        userList.render(filteredUsers);
     };
+
+    // Event listener para el buscador
+    const searchInputEl = document.getElementById('search-input');
+    if (searchInputEl) {
+        searchInputEl.addEventListener('input', refreshList);
+    }
 
     // Primera carga
     refreshList();
