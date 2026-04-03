@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (id) {
             // Si hay un ID, estamos actualizando
             userService.updateUser(id, { name, email, role });
+            alert('Usuario editado correctamente.');
         } else {
             // Si no hay ID, creamos uno nuevo
             userService.addUser(name, email, role);
