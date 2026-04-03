@@ -7,10 +7,15 @@ export class UserList {
         this.container = document.getElementById(containerId);
         this.onEdit = onEdit; // Callback para editar
         this.onDelete = onDelete; // Callback para eliminar
+        this.counter = document.getElementById('user-count');
     }
 
     render(users) {
         this.container.innerHTML = ''; // Limpiar contenedor
+
+        if (this.counter) {
+            this.counter.textContent = `(${users.length})`;
+        }
 
         if (users.length === 0) {
             this.container.innerHTML = '<tr><td colspan="5" class="text-center">No hay usuarios registrados</td></tr>';
