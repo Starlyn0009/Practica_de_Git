@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Si no hay ID, creamos uno nuevo
             userService.addUser(name, email, role);
+            alert('Usuario agregado correctamente.');
         }
 
         refreshList(); // Actualizar vista después de modificar datos
