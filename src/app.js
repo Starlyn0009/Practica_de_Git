@@ -25,8 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // @branch feature/delete-user
     const handleDelete = (id) => {
         if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
-            userService.deleteUser(id);
-            refreshList(); // Actualizar vista
+            if (userService.deleteUser(id)) {
+                refreshList(); // Actualizar vista
+
+                // Mostrar alerta visual temporal
+                const globalAlert = document.getElementById('global-alert');
+                if (globalAlert) {
+                    globalAlert.textContent = 'Usuario eliminado correctamente.';
+                    globalAlert.style.display = 'block';
+                    globalAlert.classList.add('alert-success');
+
+                    // Ocultar después de 3 segundos
+                    setTimeout(() => {
+                        globalAlert.style.display = 'none';
+                        globalAlert.classList.remove('alert-success');
+                    }, 3000);
+                }
+            }
         }
     };
 
